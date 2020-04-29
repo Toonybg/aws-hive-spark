@@ -1,5 +1,5 @@
 name := "aws-hive-spark"
-version := "0.1"
+version := "0.13"
 scalaVersion := "2.11.12"
 val sparkVersion = "2.3.2"
 
