@@ -24,19 +24,6 @@ case class Queries() {
       .count().orderBy($"count".desc)
   }
 
-  // — 3. Pour chaque utilisateur, l'Animé qu'il a le plus regardé
-
-  def mostWatchedByUser() = {
-    /*spark.sql(
-      "SELECT a. username , anime_id, a.my_watched_episodes AS mwe
-          FROM ual AS a
-          LEFT JOIN (
-              SELECT username, max(my_watched_episodes) as max_mwe
-              FROM ual
-              GROUP BY username)
-              as b ON a.username = b.username
-         WHERE mwe = max_mwe").show */
-  }
   //2. Pour chaque utilisateur, l'Animé qu'il a le plus regardé
   // username, anime_id, my_watched_episodes
   def mostWatchedByUser(ual_raw: DataFrame):DataFrame = {
@@ -70,7 +57,7 @@ case class Queries() {
     ual.groupBy("username").avg("my_score").orderBy($"avg(my_score)".desc).toDF("username","avg_my_score").limit(100)
   }
 
-  def saveDf(df: DataFrame,path: String) = {
+  def saveDf(df: DataFrame,path: String): Unit = {
     df.coalesce(1).write.mode("overwrite").format("com.databricks.spark.csv").option("header", "true").save(path)
 
   }

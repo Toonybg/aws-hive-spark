@@ -9,8 +9,28 @@ import org.apache.spark.sql.catalyst.analysis.NoSuchTableException
 object Execution {
 
   def main(args: Array[String]): Unit = {
-    Logger.getLogger("org").setLevel(Level.WARN)
+
     val logger = Logger.getLogger(getClass.getName)
+
+    // program arguments
+
+    val usage = """
+        Usage: $jar-path $main-class
+    """
+
+    if (args.length == 0) {
+      println(usage)
+      sys.exit(2)
+    }
+
+    val environment = args(0)
+    if (environment == "dev") println("dev!!")
+    else if (environment == "aws") println("aws!!")
+
+    logger.warn("*** Execution Program END ***")
+    sys.exit(3)
+
+    Logger.getLogger("org").setLevel(Level.WARN)
     logger.warn("*** Execution Program Started v018 ***")
 
     val homePath = "hdfs://masternode-10-143-30-198.eu-west-1.compute.internal:8020/user/amarkovski/"
