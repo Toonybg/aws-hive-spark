@@ -10,6 +10,6 @@ libraryDependencies ++= Seq(
   //"org.apache.spark" %% "spark-streaming-twitter" % sparkVersion
   "org.scalactic" %% "scalactic" % "3.1.1",
   "org.scalatest" %% "scalatest" % "3.1.1" % "test",
-  //"com.typesafe" % "config" % "1.4.0"
+  "com.typesafe" % "config" % "1.4.0"
 )
 

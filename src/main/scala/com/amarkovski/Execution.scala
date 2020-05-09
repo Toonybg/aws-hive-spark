@@ -1,6 +1,5 @@
 package com.amarkovski
 
-import com.amarkovski.Main.getClass
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.SparkSession
@@ -15,9 +14,8 @@ object Execution {
     // program arguments
 
     val usage = """
-        Usage: $jar-path $main-class
+        Usage: TODO |=)
     """
-
     if (args.length == 0) {
       println(usage)
       sys.exit(2)
@@ -49,16 +47,20 @@ object Execution {
     import spark.implicits._
     //val saveMode = "overwrite"
     val saveMode = "ignore"
-    val df_d_ual = spark.read.option("header", "true").option("inferSchema", "true").csv(homePath + "datasets/d_UserAnimeList.csv")
+    val df_d_ual = spark.read.option("header", "true").option("inferSchema", "true")
+      .csv(homePath + "datasets/d_UserAnimeList.csv")
     df_d_ual.write.mode(saveMode).saveAsTable("amarkovskidb.d_useranimelist")
 
-    val df_ual = spark.read.option("header", "true").schema(df_d_ual.schema).csv(homePath + "datasets/UserAnimeList.csv")
+    val df_ual = spark.read.option("header", "true").schema(df_d_ual.schema)
+      .csv(homePath + "datasets/UserAnimeList.csv")
     df_ual.write.mode(saveMode).saveAsTable("amarkovskidb.useranimelist")
 
-    val df_al = spark.read.option("header", "true").option("inferSchema", "true").csv(homePath + "datasets/AnimeList.csv")
+    val df_al = spark.read.option("header", "true").option("inferSchema", "true")
+      .csv(homePath + "datasets/AnimeList.csv")
     df_al.write.mode(saveMode).saveAsTable("amarkovskidb.animelist")
 
-    val df_ul = spark.read.option("header", "true").option("inferSchema", "true").csv(homePath + "datasets/UserList.csv")
+    val df_ul = spark.read.option("header", "true").option("inferSchema", "true")
+      .csv(homePath + "datasets/UserList.csv")
     df_ul.write.mode(saveMode).saveAsTable("amarkovskidb.userlist")
 
     spark.sql("use amarkovskidb").show()
