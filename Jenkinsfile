@@ -13,12 +13,12 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        /* stage('Test') {
             steps {
                 echo "Testing..."
                 sh "/usr/local/bin/sbt test"
             }
-        }
+        }*/
 
         stage('Package') {
             steps {
