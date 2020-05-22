@@ -23,7 +23,7 @@ object Execution {
 
     val environment = args(0)
     if (environment == "dev") println("dev!!!")
-    else if (environment == "aws") println("aws!!")
+    else if (environment == "aws") println("aws!!!")
 
     logger.warn("*** Execution Program END ***")
     sys.exit(3)
