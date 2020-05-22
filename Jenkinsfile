@@ -22,7 +22,7 @@ pipeline {
 
          stage('Package') {
             steps {
-                echo "Packaging..."
+                //echo "Packaging..."
                 sh "/usr/local/bin/sbt package"
             }
         } 
