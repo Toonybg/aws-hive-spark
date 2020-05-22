@@ -20,12 +20,12 @@ pipeline {
             }
         }*/
 
-        stage('Package') {
+        /* stage('Package') {
             steps {
                 echo "Packaging..."
                 sh "/usr/local/bin/sbt package"
             }
-        }
+        } */
 
     }
 }
